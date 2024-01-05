@@ -1,4 +1,4 @@
-package controller;
+package com.example.cloudy_spring.controller;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
