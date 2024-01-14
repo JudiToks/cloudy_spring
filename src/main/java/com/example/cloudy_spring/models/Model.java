@@ -35,6 +35,6 @@ public class Model
 //    utils
     public String toString()
     {
-        return String.format("Customer[id_model=%d, nom=%s]", id_model, nom);
+        return String.format("Model[id_model=%d, nom=%s]", id_model, nom);
     }
 }

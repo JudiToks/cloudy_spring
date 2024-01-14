@@ -37,6 +37,6 @@ public class Transmission
 //    utils
     public String toString()
     {
-        return String.format("Customer[id_transmission=%d, nom=%s]", id_transmission, nom);
+        return String.format("Transmission[id_transmission=%d, nom=%s]", id_transmission, nom);
     }
 }

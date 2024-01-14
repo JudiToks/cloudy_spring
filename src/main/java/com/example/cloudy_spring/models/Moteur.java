@@ -37,6 +37,6 @@ public class Moteur
 //    utils
     public String toString()
     {
-        return String.format("Customer[id_moteur=%d, nom=%s]", id_moteur, nom);
+        return String.format("Moteur[id_moteur=%d, nom=%s]", id_moteur, nom);
     }
 }
