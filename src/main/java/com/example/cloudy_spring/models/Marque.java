@@ -37,6 +37,6 @@ public class Marque
 //    utils
     public String toString()
     {
-        return String.format("Customer[id_marque=%d, nom=%s]", id_marque, nom);
+        return String.format("Marque[id_marque=%d, nom=%s]", id_marque, nom);
     }
 }
