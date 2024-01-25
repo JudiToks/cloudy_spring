@@ -140,7 +140,7 @@ CREATE TABLE Validation_annonce(
    FOREIGN KEY(Id_Annonce) REFERENCES Annonce(Id_Annonce)
 );
 
-CREATE SEQUENCE vendu START 1;
+CREATE SEQUENCE vendu_seq START 1;
 
 CREATE TABLE Vendu(
    Id_Vendu SERIAL,

@@ -1,5 +1,6 @@
 package com.example.cloudy_spring.models;
 
+import com.example.cloudy_spring.models.connect.Connect;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -7,6 +8,8 @@ import jakarta.persistence.Id;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -215,9 +218,39 @@ public class Annonce
                 '}';
     }
 
-//    public static List<Annonce> findByIdUser(Connection connection, int id_user)
-//    {
-//        List<Annonce> valiny = new ArrayList<>();
-//        return valiny;
-//    }
+    public static List<Annonce> findByIdUser(Connection connection, int id_user)
+    {
+        List<Annonce> valiny = new ArrayList<>();
+        boolean isOuvert = false;
+        String query = "select * from annonce where id_user = "+id_user+";";
+        try
+        {
+            if (connection == null)
+            {
+                connection = Connect.connectToPostgre();
+                isOuvert = true;
+            }
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next())
+            {
+                Annonce temp = new Annonce();
+                temp.setId_annonce(resultSet.getInt("id_medicament"));
+                temp.setDescription(resultSet.getString("nom"));
+                valiny.add(temp);
+            }
+            resultSet.close();
+            statement.close();
+            if (isOuvert)
+            {
+                connection.close();
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println("Annonce findByIdUser issues !");
+            e.printStackTrace();
+        }
+        return valiny;
+    }
 }
