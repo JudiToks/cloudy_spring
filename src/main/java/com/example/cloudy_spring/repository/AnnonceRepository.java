@@ -7,6 +7,5 @@ import java.util.List;
 
 public interface AnnonceRepository extends CrudRepository<Annonce, Integer>
 {
-    List<Annonce> findByIdUser(int id_user);
     Annonce findById(int id_annonce);
 }
