@@ -1,11 +1,9 @@
 package com.example.cloudy_spring.controller;
 
-import java.sql.Date;
 import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,31 +36,27 @@ public class Pct_commissionController {
         return (ArrayList<Pct_commission>)Pct_commissionRepository.findAll();
     }
 
-    @PostMapping("/save/{pct}/{datetime}")
-    public Pct_commission save(@PathVariable int pct,@PathVariable String datetime ) {
-        String dateFormat = "yyyy-MM-dd'T'HH:mm:ss";
-        
-        Date date = parseDate(datetime, dateFormat);
-        Timestamp maj = new Timestamp(date.getTime());
-
-        Pct_commission Pct_commission=new Pct_commission(pct,maj);
-        return Pct_commissionRepository.save(Pct_commission);
-    }
-
     @DeleteMapping("deleteById/{id}")
     public void deleteById(@PathVariable int id) {
         Pct_commissionRepository.deleteById(id);
     }
 
 
-    private static Date parseDate(String dateString, String dateFormat) {
-        SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
-        try {
-            return (Date) sdf.parse(dateString);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return null;
-        }
+
+    @PostMapping("/save/{pct}/{datetime}")
+    public Pct_commission save(@PathVariable int pct, @PathVariable String datetime) {
+        String dateFormat = "yyyy-MM-dd'T'HH:mm:ss";
+        LocalDateTime localDateTime = parseLocalDateTime(datetime, dateFormat);
+    
+        Timestamp maj = Timestamp.valueOf(localDateTime);
+    
+        Pct_commission pctCommission = new Pct_commission(pct, maj);
+        return Pct_commissionRepository.save(pctCommission);
+    }
+    
+    private static LocalDateTime parseLocalDateTime(String dateString, String dateFormat) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormat);
+        return LocalDateTime.parse(dateString, formatter);
     }
 
 }
