@@ -134,7 +134,7 @@ CREATE SEQUENCE validation_annonce_seq START 1;
 
 CREATE TABLE Validation_annonce(
    Id_Validation_annonce SERIAL,
-   date_validation INTEGER,
+   date_validation DATE,
    Id_Annonce INTEGER NOT NULL,
    PRIMARY KEY(Id_Validation_annonce),
    FOREIGN KEY(Id_Annonce) REFERENCES Annonce(Id_Annonce)

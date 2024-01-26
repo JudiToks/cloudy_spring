@@ -1,8 +1,6 @@
 package com.example.cloudy_spring.controller;
 
-import com.example.cloudy_spring.models.Model;
 import com.example.cloudy_spring.models.Transmission;
-import com.example.cloudy_spring.repository.ModelRepository;
 import com.example.cloudy_spring.repository.TransmissionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
