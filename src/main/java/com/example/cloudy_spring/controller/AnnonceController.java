@@ -1,14 +1,11 @@
 package com.example.cloudy_spring.controller;
 
 import com.example.cloudy_spring.models.Annonce;
-import com.example.cloudy_spring.models.Marque;
 import com.example.cloudy_spring.repository.AnnonceRepository;
-import com.example.cloudy_spring.repository.MarqueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

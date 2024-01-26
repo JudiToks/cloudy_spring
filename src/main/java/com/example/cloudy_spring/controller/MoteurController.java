@@ -1,8 +1,6 @@
 package com.example.cloudy_spring.controller;
 
-import com.example.cloudy_spring.models.Marque;
 import com.example.cloudy_spring.models.Moteur;
-import com.example.cloudy_spring.repository.MarqueRepository;
 import com.example.cloudy_spring.repository.MoteurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
