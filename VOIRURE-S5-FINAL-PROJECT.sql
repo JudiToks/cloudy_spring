@@ -11,7 +11,7 @@ CREATE TABLE Utilisateur(
    email VARCHAR(50),
    mdp VARCHAR(50),
    telephone VARCHAR(50),
-   est_admin BOOLEAN,
+   role VARCHAR,
    PRIMARY KEY(Id_User)
 );
 
@@ -149,3 +149,31 @@ CREATE TABLE Vendu(
    PRIMARY KEY(Id_Vendu),
    FOREIGN KEY(Id_Annonce) REFERENCES Annonce(Id_Annonce)
 );
+
+
+SELECT
+   SUM(montant) AS total_montant,
+   EXTRACT(MONTH FROM date_recu) AS mois,
+   EXTRACT(YEAR FROM date_recu) AS annee
+FROM compte_commissionaire
+GROUP BY mois, annee
+ORDER BY annee, mois
+LIMIT 12;
+
+select
+   u.nom,
+   count(v.Id_Annonce) as nombre
+from Vendu v
+   join Annonce a on a.Id_Annonce = v.Id_Annonce
+   join Utilisateur u on u.Id_User = a.Id_User
+group by u.nom
+order by nombre desc;
+
+select
+   u.nom,
+   count(v.Id_Annonce) as nombre
+from Vendu v
+   join Annonce a on a.Id_Annonce = v.Id_Annonce
+   join Utilisateur u on u.Id_User = a.Id_User
+group by u.nom
+order by nombre desc;
